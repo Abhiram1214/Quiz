@@ -1,18 +1,15 @@
 class QuestionsController < ApplicationController
   def index
-    @current_question=Question.first
-
-    @next=Question.find_by(:id=>@iterate)
-
-
+    @questions=Question.first
+    @next=@questions.increment(:id)
   end
 
   def next
-    @questions=Question.find_by(params[:question_id])
-    @current_question = @questions.id.next
-    #p @iterate
-    
+    @questions=Question.first
+    @iterate=@questions.id.next
+    @next=Question.find_by(:id=>@iterate)
 
+    #p @iterate
 
     respond_to do |format|
       format.js{}

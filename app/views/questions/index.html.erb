@@ -8,8 +8,7 @@
             $.ajax({
                url: "/questions/next",
                remote: true,
-               type: "GET",
-                params: {'question_id':$("#current_question_id").html()}
+               type: "GET"
             });
 
         });
@@ -18,10 +17,12 @@
 
 </script>
 
+<%= @questions.inspect %>
+
 
 <div class="displayquiz">
 
-<%= render "questions/questionsanswers" %>
+
 </div>
 
 <div class="menu">
