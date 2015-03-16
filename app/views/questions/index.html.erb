@@ -1,0 +1,37 @@
+<h1><u>Take the quiz</u></h1>
+
+
+
+<script>
+    $(document).ready(function(){
+        $("#next").click(function(){
+            $.ajax({
+               url: "/questions/next",
+               remote: true,
+               type: "GET",
+                params: {'question_id':$("#current_question_id").html()}
+            });
+
+        });
+
+    });
+
+</script>
+
+
+<div class="displayquiz">
+
+<%= render "questions/questionsanswers" %>
+</div>
+
+<div class="menu">
+  <span id="prev"><a href="#">prev</a></span>
+  <span id="next"><a href="#">next</a></span>
+</div>
+<br />
+
+<div class="total">
+ <span id="scorelabel">Total score is </span>
+  <span id="score"><%= text_field_tag 'value' %></span>
+</div>
+

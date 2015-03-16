@@ -1,0 +1,10 @@
+
+
+    <div id="current_question_id"><%= @current_question.id %></div>.
+    <%= @current_question.question %><br>
+
+    <% @current_question.answers.each do |ans| %>
+        <%= radio_button_tag 'options',ans.answer %><%= label_tag 'opt',ans.answer%><br />
+        <% end %>
+
+    <br />
