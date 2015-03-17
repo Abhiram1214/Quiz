@@ -4,26 +4,37 @@
 
 <script>
     $(document).ready(function(){
+        var countvalue=$("#counter").val();
         $("#next").click(function(){
+
+            console.log(countvalue)
+
             $.ajax({
                url: "/questions/next",
                remote: true,
-               type: "GET"
+               type: "GET",
+               data: {count: countvalue}
             });
 
+            countvalue++;
+            console.log(countvalue);
         });
 
     });
 
 </script>
 
-<%= @questions.inspect %>
+
+
+
 
 
 <div class="displayquiz">
 
 
 </div>
+
+<input type="hidden" value="1" id="counter">
 
 <div class="menu">
   <span id="prev"><a href="#">prev</a></span>

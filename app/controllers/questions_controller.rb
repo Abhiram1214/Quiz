@@ -1,11 +1,13 @@
 class QuestionsController < ApplicationController
   def index
+
     @questions=Question.first
-    @next=@questions.increment(:id)
+    #@nextquestion=@questions.
+        #@next=@questions.i
   end
 
   def next
-    @questions=Question.first
+    @questions=Question.find(params[:count])
     @iterate=@questions.id.next
     @next=Question.find_by(:id=>@iterate)
 
