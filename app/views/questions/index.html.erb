@@ -5,45 +5,84 @@
 <script>
     $(document).ready(function(){
         var countvalue=$("#counter").val();
-        $("#next").click(function(){
 
-            console.log(countvalue)
+        console.log("on load"+ countvalue);
+            $.ajax({
+                url: "/questions/prev",
+                type: "GET"
+            }) ;
 
             $.ajax({
                url: "/questions/next",
+                type: "GET"
+
+            });
+
+        $("#next").click(function(){
+            $.ajax({
+               url: "/questions/allquestions",
                remote: true,
                type: "GET",
                data: {count: countvalue}
             });
 
-            countvalue++;
-            console.log(countvalue);
+            ++countvalue;
+            console.log("next"+countvalue);
+
+        });
+
+
+        $("#prev").click(function(){
+            var minus=--countvalue-1;
+            console.log("aa"+minus);
+            $.ajax({
+               url: '/questions/prevquestions',
+                remote: true,
+                type: "GET",
+                data: {negcount: minus}
+            });
+
+            console.log("prev"+minus);
+
+        });
+
+        $('#next').click(function(){
+           var value=$('input[name=options]:checked').val();
+            console.log("fired "+value);
+            $.ajax({
+                url: "/questions/buttonvalue",
+                remote: true,
+                type: "POST",
+                data: {data1: value}
+            });
         });
 
     });
 
 </script>
 
-
-
-
-
+<form>
 
 <div class="displayquiz">
 
 
 </div>
-
-<input type="hidden" value="1" id="counter">
-
-<div class="menu">
-  <span id="prev"><a href="#">prev</a></span>
-  <span id="next"><a href="#">next</a></span>
+</form>
+<div class="links">
+<span id="prev"></span>
+  <span id="next"></span>
 </div>
+
+  <input type="hidden" value="1" id="counter">
+
+<div class="value">
+
+
+</div>
+
 <br />
 
 <div class="total">
  <span id="scorelabel">Total score is </span>
   <span id="score"><%= text_field_tag 'value' %></span>
 </div>
-
