@@ -42,9 +42,11 @@ class QuestionsController < ApplicationController
   end
 
   def buttonvalue
-     #@buttonvalue=Answer.find(params[:id])
+     @buttonvalue=Answer.find_by_answer(params[:data1])
+
+
      respond_to do |format|
-       format.js{"render :nothing=>true"}
+       format.js{}
     end
   end
 end

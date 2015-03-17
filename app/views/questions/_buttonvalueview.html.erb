@@ -1,1 +1,18 @@
-<%= @buttonvalue.inspect %>
+
+<% if @buttonvalue.is_correct == 'y'%>
+  <script>
+    calculate(1);
+    function calculate(score)
+    {
+    console.log("dd "+score);
+          var total=score*10;
+          score++;
+    console.log(score);
+          $("#score").text(total);
+    }
+  </script>
+
+    <%else%>
+    <%="no" %>
+<%end%>
+
