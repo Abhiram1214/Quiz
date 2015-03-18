@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   #resources :questions
   resources :answers
 
+
   get '/quiz',to: 'questions#index'
   get '/questions/next'
   get '/questions/prev'
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   get '/questions/allquestions'
   get '/questions/prevquestions'
   post '/questions/buttonvalue'
+  get '/questions/new'
+  resources :questions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

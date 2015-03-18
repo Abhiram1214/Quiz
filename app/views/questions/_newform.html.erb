@@ -1,0 +1,28 @@
+<%= nested_form_for (@newquestion) do |f| %>
+ <div>
+    <span><%= f.label :question %></span>
+    <span><%= f.text_field :question %></span>
+ </div>
+    <br />
+
+    <%= f.fields_for :answers do |solution| %>
+<div class="field">
+
+        <%=solution.label :answer %><br>
+        <span><%= solution.text_field :answer,{:required=>true} %></span>
+  <span><%= radio_button_tag "options", 'n',nil,{class:'options'}%></span>
+</div>
+    <%end%>
+<br />
+    <%= f.submit %>
+<%end%>
+
+<script>
+  $(document).ready(function(){
+    $('body').on('click','input[name=options]:checked',{value: 'y'},function(event){
+       $(this).attr('value',event.data.value);
+
+    });
+
+        });
+</script>

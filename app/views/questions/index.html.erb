@@ -29,7 +29,7 @@
             ++countvalue;
             console.log("next"+countvalue);
 
-        });
+        })
 
 
         $("#prev").click(function(){
@@ -53,7 +53,10 @@
                 url: "/questions/buttonvalue",
                 remote: true,
                 type: "POST",
-                data: {data1: value}
+                data: {data1: value,
+                score: $("#score").attr('data-score'),
+                total: $("#score").attr('data-total')
+                }
             });
         });
 
@@ -84,5 +87,10 @@
 
 <div class="total">
  <span id="scorelabel">Total score is </span>
-  <span id="score"></span>
+  <span id="score" data-score="0" data-total="0"></span>
+</div>
+
+<div>
+
+<%= link_to "create question", questions_new_path %>
 </div>
